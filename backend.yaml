@@ -26,7 +26,7 @@
   - name: create app dir
     ansible.builtin.file:
       path: /app
-      state: drectory
+      state: directory
 
   - name: download the backend code
     ansible.builtin.get_url:
