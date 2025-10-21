@@ -3,7 +3,7 @@
   become: yes
   vars:
     mysql_root_password: ExpenseApp@1
-    login_host: mysql.vasavi.online
+    login_host: 172.31.19.255   #mysql.vasavi.online
   tasks:
   - name: Ansible to install PyMySQL
     ansible.builtin.pip:
@@ -30,7 +30,14 @@
     ignore_errors: true
     register: mysql_info
 
-  #- name: create mysql root password
+  - name: print mysql info
+    ansible.builtin.debug:
+      msg: "{{ mysql_info }}"  
+
+  - name: create mysql root password
+    ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ mysql_root_password }}"
+    when: 
+
 
 
 
