@@ -55,6 +55,11 @@
       state: started
       daemon_reload: true    
 
+  - name: ansible to install PyMySQL
+    ansible.builtin.pip:
+      name: PyMySQL
+      executable: pip3.9    
+
   - name: load mysql schema
     community.mysql.mysql_db:  
       login_user: root
@@ -64,10 +69,6 @@
       state: import
       target: /app/schema/backend.sql
 
-  - name: ansible to install PyMySQL
-    ansible.builtin.pip:
-      name: 
-      - PyMySQL
-      executable: pip3.9
+  
 
 
