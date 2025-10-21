@@ -3,7 +3,7 @@
   become: yes
   vars:
     mysql_root_password: ExpenseApp@1
-    login_host: 172.31.19.255   #mysql.vasavi.online
+    login_host: mysql.vasavi.online
   tasks:
   - name: Ansible to install PyMySQL
     ansible.builtin.pip:
