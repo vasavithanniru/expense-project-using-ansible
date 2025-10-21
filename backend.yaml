@@ -57,7 +57,7 @@
 
   - name: load mysql schema
     community.mysql.mysql_db:  
-      loin_user: root
+      login_user: root
       login_password: "{{ mysql_root_password }}"
       login_host: "{{ mysql_IP }}"
       name: all
