@@ -3,7 +3,7 @@
   become: yes
   vars:
     mysql_root_password: ExpenseApp@1
-    mysql_IP: 172.31.29.25
+    mysql_IP: 172.31.28.206
   tasks:
   - name: disable default nodejs
     ansible.builtin.command: dnf module disable nodejs -y
@@ -47,13 +47,7 @@
   - name: copy backend service
     ansible.builtin.copy:
       src: backend.service
-      dest: /etc/systemd/system/backend.service    
-
-  - name: reload the service
-    ansible.builtin.systemd_service:
-      name: backend
-      state: started
-      daemon_reload: true    
+      dest: /etc/systemd/system/backend.service       
 
   - name: ansible to install PyMySQL
     ansible.builtin.pip:
@@ -71,6 +65,10 @@
       state: import
       target: /app/schema/backend.sql
 
-  
+  - name: reload the service
+    ansible.builtin.systemd_service:
+      name: backend
+      state: restarted
+      daemon_reload: true 
 
 
